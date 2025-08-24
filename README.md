@@ -3,6 +3,7 @@
 [![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Type Checked](https://img.shields.io/badge/type--checked-mypy-blue.svg)](http://mypy-lang.org/)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+[![codecov](https://codecov.io/github/starswaterbrook/toynet/graph/badge.svg?token=2MFVI379MF)](https://codecov.io/github/starswaterbrook/toynet)
 
 An educational but robust deep learning framework implemented from scratch using NumPy.  
 Data loading is handled with Pandas.
