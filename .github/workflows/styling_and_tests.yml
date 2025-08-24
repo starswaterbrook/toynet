@@ -1,0 +1,39 @@
+name: Run tests and check styling
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - "**"
+
+jobs:
+  run-checks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          pip install -e ".[dev]"
+
+      - name: Check code formatting with ruff
+        run: |
+          ruff check
+          ruff format --check
+
+      - name: Check typing with mypy
+        run: |
+          mypy --install-types --config-file pyproject.toml ./src
+
+      - name: Run tests
+        run: |
+          pytest --cov=toynet --cov-report=xml --cov-report=term tests/

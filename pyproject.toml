@@ -1,0 +1,94 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "toynet-ml"
+version = "1.0.0"
+description = "An educational but robust deep learning framework implemented from scratch using NumPy."
+keywords = ["deep learning", "machine learning", "neural networks", "numpy", "artificial intelligence", "framework", "education"]
+authors = [
+    { name = "Maciej Kmieć" }
+]
+readme = "README.md"
+license-files = ["LICENSE*"]
+requires-python = ">=3.12"
+
+dependencies = [
+    "numpy>=2.3.2",
+    "pandas>=2.3.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.4.1",
+    "pytest-cov>=6.2.1",
+    "ruff>=0.12.8",
+    "mypy>=1.17.1",
+    "pip-tools>=7.5.0"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-dir]
+"" = "src"
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+exclude = ["whitelist.py", ".venv"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    "ANN401",
+    "B008",
+    "COM812",
+    "D100",
+    "D101",
+    "D102",
+    "D103",
+    "D104",
+    "D105",
+    "D107",
+    "D203",
+    "D211",
+    "D213",
+    "DTZ005",
+    "FAST001",
+    "FBT001",
+    "FBT002",
+    "NPY002",
+    "N803",
+    "N806",
+    "PIE796",
+    "PLR2004",
+    "S101",
+    "S311"
+    ]
+extend-select = ["I"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["ANN001", "ANN202", "SIM115", "SLF001"]
+
+[tool.mypy]
+python_version = "3.12"
+check_untyped_defs = true
+disallow_untyped_defs = true
+ignore_missing_imports = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_unused_configs = true
+
+[tool.coverage.run]
+source = ["src"]
+omit = ["*/tests/*", "*/test_*", "*/protocol.py"]
+
+[tool.coverage.html]
+directory = "htmlcov"
